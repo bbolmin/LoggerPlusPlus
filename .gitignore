@@ -13,3 +13,4 @@ hs_err_*.log
 .vscode/**/*
 releases/**/*
 .settings/
+.DS_Store

@@ -13,10 +13,10 @@ public class RequestViewerPanel extends PopOutPanel {
         super();
         this.controller = controller;
 
-        this.variableViewPanel = new VariableViewPanel(controller.getPreferences(), Globals.PREF_MESSAGE_VIEW_LAYOUT,
+        this.variableViewPanel = new VariableViewPanel(controller.getPreferences(), null,
                 controller.getRequestEditor().getComponent(), "Request",
                 controller.getResponseEditor().getComponent(), "Response",
-                VariableViewPanel.View.HORIZONTAL);
+                VariableViewPanel.View.VERTICAL);
 
         this.setComponent(variableViewPanel);
         this.setTitle("Request/Response Viewer");

@@ -52,9 +52,16 @@ public class LogViewPanel extends JPanel {
 
         requestViewerPanel = controller.getRequestViewerController().getRequestViewerPanel();
 
-        tableViewerSplitPanel = new VariableViewPanel(controller.getPreferences(), Globals.PREF_LAYOUT,
+        /*
+        * change
+        * - null
+        * VariableViewPanel.View.HORIZONTAL
+        * setResizeWeight(0.8);
+        * */
+        tableViewerSplitPanel = new VariableViewPanel(controller.getPreferences(), null,
                 logTableScrollPane, "Log Table",
-                requestViewerPanel, "Request/Response", VariableViewPanel.View.VERTICAL);
+                requestViewerPanel, "Request/Response", VariableViewPanel.View.HORIZONTAL);
+        ((JSplitPane) tableViewerSplitPanel.wrapper).setResizeWeight(0.75);
 
         buildUI();
     }

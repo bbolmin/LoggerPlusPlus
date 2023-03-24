@@ -98,7 +98,13 @@ public class GrepperPanel extends JPanel implements GrepperListener {
             //https://forum.portswigger.net/thread/eeditor-custom-highlighting-991b1a7e?CategoryId=burp-extensions
         });
 
-        JSplitPane resultsSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, new JScrollPane(grepResultsTable), requestViewerController.getRequestViewerPanel());
+        /*
+        * change
+        * JSplitPane.HORIZONTAL_SPLIT
+        * resultsSplitPane.setResizeWeight(0.75);
+        * */
+        JSplitPane resultsSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, new JScrollPane(grepResultsTable), requestViewerController.getRequestViewerPanel());
+        resultsSplitPane.setResizeWeight(0.75);
         this.uniqueTable = new UniquePatternMatchTable(controller);
 
         this.resultsPane = new JTabbedPane();

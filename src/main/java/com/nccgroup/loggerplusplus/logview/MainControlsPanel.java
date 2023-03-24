@@ -7,12 +7,15 @@ import com.nccgroup.loggerplusplus.util.userinterface.dialog.TagDialog;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class MainControlsPanel extends JPanel {
-    
+
     private final LogFilterController logFilterController;
 
-    public MainControlsPanel(LogFilterController logFilterController){
+    public MainControlsPanel(LogFilterController logFilterController) {
         super(new GridBagLayout());
 
         this.logFilterController = logFilterController;
@@ -46,10 +49,24 @@ public class MainControlsPanel extends JPanel {
         clearLogsButton.addActionListener(actionEvent ->
                 logFilterController.getLogViewController().getLogTableController().reset());
 
+
+        /*
+        * change
+        * add hotkey : ctrl + x (Clear Logs)
+        * */
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -> {
+            if (e.getID() == KeyEvent.KEY_PRESSED) {
+                if ((e.isMetaDown() || e.isControlDown()) && e.getKeyCode() == KeyEvent.VK_X) {
+                    logFilterController.getLogViewController().getLogTableController().reset();
+                    return true;
+                }
+            }
+            return false;
+        });
+
         gbc.gridx = 4;
         gbc.weightx = 0;
         this.add(clearLogsButton, gbc);
     }
-
 
 }
